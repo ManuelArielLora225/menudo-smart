@@ -1,17 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+//Importar el googleAuthProvider en toda la app para que lo reconoscan todos los componetes y paginas
+import { GoogleOAuthProvider } from '@react-oauth/google';
+//Importar el react router para poder usar las rutas
+import { BrowserRouter } from 'react-router-dom' 
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+
+  <BrowserRouter> {/* Enbolver todo en el browser router para que funcione en todas las paginas */}
+
+    {/* Usar el provider de google con mi clienteId */}
+    <GoogleOAuthProvider clientId='541388453636-rdle0ibdnie5h0matdf02nhqjhapf6mk.apps.googleusercontent.com'>
+  
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+      
+    </GoogleOAuthProvider>
+
+  </BrowserRouter>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

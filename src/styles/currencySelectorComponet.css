@@ -1,0 +1,125 @@
+/* Importar fuente Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Contenedor general del selector de moneda */
+.change-currency-general-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  max-width: 300px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Título del selector */
+.tittle-currency {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+  margin-bottom: 4px;
+  letter-spacing: 0.025em;
+}
+
+/* Contenedor del select */
+.change-currency-container {
+  position: relative;
+  width: 100%;
+}
+
+/* Estilos del select */
+#currency {
+  width: 100%;
+  padding: 12px 16px;
+  padding-right: 40px; /* Espacio para la flecha */
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #374151;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+  
+  /* Remover la flecha por defecto del navegador */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Hover del select */
+#currency:hover {
+  border-color: #9ca3af;
+  background-color: #f9fafb;
+}
+
+/* Focus del select */
+#currency:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  background-color: #ffffff;
+}
+
+/* Flecha personalizada */
+.change-currency-container::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #6b7280;
+  pointer-events: none;
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Rotar flecha cuando el select está activo */
+#currency:focus + .change-currency-container::after,
+.change-currency-container:hover::after {
+  border-top-color: #374151;
+}
+
+/* Estilos para las opciones */
+#currency option {
+  padding: 10px;
+  background-color: #ffffff;
+  color: #374151;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+}
+
+/* Estilos responsive */
+@media (max-width: 768px) {
+  .change-currency-general-container {
+    max-width: 100%;
+  }
+  
+  #currency {
+    padding: 10px 14px;
+    padding-right: 36px;
+    font-size: 16px; /* Prevenir zoom en iOS */
+  }
+}
+
+/* Estilos para estado disabled (opcional) */
+#currency:disabled {
+  background-color: #f3f4f6;
+  color: #9ca3af;
+  cursor: not-allowed;
+  border-color: #e5e7eb;
+}
+
+#currency:disabled + .change-currency-container::after {
+  border-top-color: #9ca3af;
+}
+
+/* Animación suave para cambios de estado */
+* {
+  box-sizing: border-box;
+}

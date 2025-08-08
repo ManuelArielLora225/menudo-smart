@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+//Importar pantallas o elementos
+import { Routes, Route } from 'react-router-dom' //Importar los routes y los route para asignar las rutas desde la app
+
+import Login from '../src/pages/Login' //Importar la pagina de login 
+import Dashboard from './pages/dashboard'; //Importar la pagina del Dashboard
 
 function App() {
+
   return (
+
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <Routes>
+
+        <Route path="/" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+
+      </Routes>
+
+
     </div>
+
   );
+  
 }
 
 export default App;

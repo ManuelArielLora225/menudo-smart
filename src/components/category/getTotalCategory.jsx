@@ -13,6 +13,8 @@ const TotalCategory = ({ idCategory }) => {
             getCategoryTotal()
     },[idCategory])
 
+    console.log(data)
+
     return(
 
         <div className='container-total-category'>

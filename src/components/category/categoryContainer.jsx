@@ -1,50 +1,53 @@
 // Importar elementos 
-import Category from './category' //Importar el componente con las categorias
+import CategoryIncome from './categoryIncome' //Importar el componente de categoria de ingresos
+import CategoryExpense from './categoryExpense' //Importar el componente de categoria de gastos
+import '../../styles/categoryContainerComponent.css'
 
 
 //Crear Componente donde iran las categorias
 const CategoryContainer = () => {
 
-     const income = 'income' //Variable con valor de income o ingreso
-     const expense = 'expense' //Variable con valor expense o gasto
 
     return (
-        /* Contenedor de ingresos */
+        
+        <div className='categories-container'>
 
-    <div className="category-container-container">
+            {/* Ingresos */}
 
-        <div className="categories-container">
+            <div className='container-category-income'>
 
-            <div className="tittles-container">
+                <div className='header'>
 
-                <h1 className="titlle">Ingresos</h1>
+                    <h2 className='tittle'>Ingresos</h2>
 
-                {/* Poner componente para anadir categorias */}
+                    <button className='add-category'>Añadir Categoria</button>
 
-                <Category type={income} /> {/* Poner categorias de ingresos */}
+                </div>
+
+                <CategoryIncome /> {/* usar el componente de la lista de categorias de ingresos */}
+
 
             </div>
-    </div>
 
-        {/* Contenedor de gastos */}
-
-    <div className="category-container-container">
+            {/* Gastos */}
 
 
-            <div className="tittles-container">
+            <div className='container-category-expense'>
 
-                <h1 className="titlle">Gastos</h1>
+                <div className='header'>
 
-                {/* Poner componente para anadir categorias */}
+                    <h2 className='tittle'>Gastos</h2>
 
-                <Category type={expense} /> {/* Poner categorias de gastos */}
+                    <button className='add-category'>Añadir Categoria</button>
+
+                </div>
+
+                <CategoryExpense /> {/* usar el componente de la lista de categorias de ingresos */}
 
 
             </div>
 
         </div>
-
-     </div>
     )
 }
 

@@ -4,11 +4,10 @@ import { useFetchApi } from "../hooks/useFetchApi"; //Usar el hook para manejar 
 
 //Crear la funcion para sumar el total de una categoria usando el id de categoria traido por el padre como prop
 export function useSumTransactions(idCategory) {
-
+    
     //Importar las variables del useFetchApi usando el url y poniendo el id de la categoria como parametro
     const {data, error, loading, request } = useFetchApi(`http://localhost:4000/api/transactions/totalTransactions/${idCategory}`)
 
-    console.log(idCategory)
 
     //Funcion con el request para obtener el total de la categoria
     const getCategoryTotal = async () => {

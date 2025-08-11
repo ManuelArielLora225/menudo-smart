@@ -25,7 +25,7 @@ export function useGetCategoryIncome() {
 
 }
 
-//Crear las funcio para solicitar las categorias de ingresos del usuario 
+//Crear las funcio para solicitar las categorias de gastos del usuario 
 export function useGetCategoryExpense() {
 
     const token = localStorage.getItem("token") //Obtener el token del usuario 

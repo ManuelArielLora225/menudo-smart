@@ -3,19 +3,22 @@ import { useEffect } from 'react' //Importar el useEfect para renderizar las fun
 import { useGetCategoryIncome } from '../../services/categoryService' //Importar la funcion para obtener la categoria de ingresos
 import '../../styles/categoryPrevew.css' //Importar el estilo 
 
-import DeleteCategory from './deleteCategory' //Importar componente para eliminar la categoria
-/* import TotalCategory from './getTotalCategory' //Importar el componente para obtener la categoria
- */
+import { useContext } from 'react' //Usar el useContext para usar el contexto del valor de value
+import { UpdateContext } from '../../providers/updateProvider' //Importar el provider para actualizar el provider
+
+
 //Crear componente de la categoria usando el tipo de categoria que traia el padre como prop
 const CategoryIncome = () => {
 
     //Usar la funcion para obtener la categoria ingresos con alias en las variables para no confundirse
     const { getCategoryIncome, data :dataIncome, error: errorIncome, loading: loadingIncome } = useGetCategoryIncome()
 
+    const {value } = useContext(UpdateContext) //USar el valor de value para actualizar las llamadas del useEffect
+
     //Hacer la funcion de llamada a la api en useaEffect de los ingresos para que no se renderice junto a la pagina
     useEffect(() => {
         getCategoryIncome()
-    }, []) 
+    }, [value]) 
 
 
    //Pendiente a sacar el total de transacciones
@@ -36,7 +39,6 @@ const CategoryIncome = () => {
 
                             <h2 className='total-category'>{categoryTotal}</h2> {/* Mostrar el total de las transacciones de la categoria */}
 
-                            <DeleteCategory  idCategory={category.id}/> {/* LLamar al componente de boton eliminar categorias con el categoryId */}
 
                         </div>
 

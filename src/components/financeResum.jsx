@@ -2,10 +2,13 @@
 import { useEffect } from 'react' //Usar el useState de react
 import { useFinanceResum } from "../services/dashboardService" //Usar la funcion de llamada a la api para obtener el gasto total, ingreso total y balance
 import Cards from './cards/cards' //Usar el componente de las cartas para los valores de los resumenes
-
+import { useContext } from 'react' //Usar el useContext para usar el contexto del valor de value
+import { UpdateContext } from '../providers/updateProvider' //Importar el provider para actualizar el provider
+ 
 const FinanceResum = () => {
 
     const { getResum, data, error, loading } = useFinanceResum(); //Obtener los valores y funciones del useFinanceResum
+    const {value } = useContext(UpdateContext) //Usar el valor del contexto para cambiar actualizar el useEffect
 
     //realizar un useEffect para que se renderice por debajo la funcion de la consulta
     useEffect(() => {
@@ -13,15 +16,7 @@ const FinanceResum = () => {
         //Traer los datos iniciales
         getResum();
 
-    //Ejecutar la llamada cada 4 segundos para que se llame nuevamente si se actualizan los datos
-    const interval = setInterval(() => {
-        getResum();
-    },4000 )
-
-    return () => clearInterval(interval) //Limpiar al desmontar el componete
-
-    }, []) 
-
+    }, [value])  // Actualizar cada que el valor del provider cambie
 
     //Funcion para cambiar el tipo de negativo o positivo segun sea el balance negativo o positivo
     const formatStyleType = (value) => {

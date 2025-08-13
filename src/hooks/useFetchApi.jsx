@@ -53,11 +53,7 @@ import { useEffect, useRef, useState } from "react";
             return json
         
         } catch(err){ //Mostrar le mensaje de error en caso de haber un error y poner null la data
-
-            if (err.name === "AbortError") { //Si el mensaje es de abrot no lo ponemos como un error real
-            console.log("Solicitud abortada, pero no es un error real");
-            return; } // No seguimos, porque no es un fallo
-
+            
             setError(err.message)
             setData(null)
 

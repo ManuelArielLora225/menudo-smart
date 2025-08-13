@@ -3,18 +3,23 @@ import { useEffect, useState } from "react"; //Usar el useState de react
 import { useGetCurrecy } from "../services/dashboardService"; //Funcion para obtener el valor de la moneda por defecto del usuario
 import { useChangeCurrency } from "../services/dashboardService"; //Funcion para cambiar el valor de la moneda por defecto del usuario
 import { currencies } from "../utils/currencies"; //Importar el objeto con todos los tipos de monedas
+import { useContext } from "react"; //Importar el useContext y usar el contexto
+import { UpdateContext } from "../providers/updateProvider"; //Importar el context para actualizar los useEffect
 import '../../src/styles/currencySelectorComponet.css' //Importar sus estilos de la hoja css
 
 const CurrencySelector = () => {
 
-    const { getCurrency, data, loading } = useGetCurrecy(); //Usar la funcion para obtener la moneda por defecto del usuario
+    const { getCurrency, data, loading } = useGetCurrecy(); //Usar la funcion para obtener la moneda por defecto del usuario\
+
+    const { value, updatevalue } = useContext(UpdateContext) //Usar la funcion y el valor para actualizar el useEfect
 
     const [selectedCurrency, setSelectedCurrency] = useState("") //setear el valor state nulo para la la moneda seleccionada
+
 
     //Obtener la moneda inicial
     useEffect(() => {
         getCurrency();
-    },[])
+    },[value]) //Actualizar cada que el valor value cambie
 
     //Setear la moneda cuando se obtenga la data 
     useEffect(() => {
@@ -35,6 +40,7 @@ const CurrencySelector = () => {
     const handleCurrencyChange = (e) => {
         e.preventDefault();
         setSelectedCurrency(e.target.value)
+        updatevalue(); //Funcion para actualizar el value y actualizar la llamada a la la moneda por defecto
     }
 
 

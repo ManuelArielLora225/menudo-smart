@@ -8,6 +8,8 @@ const TotalCategory = ({ idCategory }) => {
     //Usar la funcion para obtener el total de 
     const { getCategoryTotal, data, error, loading } = useSumTransactions(idCategory)
 
+    const {value, updateValue } = useContext(UpdateContext) //USar los valores de value y la funcion updateValue para actualizar las llamadas del useEffect
+    
     //Hacer el useEffect para ue se renderice o se llame a la funcion cada que cambie su data osea cada que cambie el valor total
     useEffect(() => {
             getCategoryTotal()

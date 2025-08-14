@@ -1,4 +1,5 @@
 //Importar elementos
+import ReactDOM from 'react-dom'; // Usar ReactDOM para renderizar el modal fuera del árbol principal (Portal)
 import { useContext } from 'react' //Usar el useContext de ract para el contexto de actualizar los useEffects
 import { useDeleteCategory } from '../../services/categoryService' // Hook para eliminar categoría
 import { UpdateContext } from '../../providers/updateProvider' // Contexto para actualizar
@@ -17,11 +18,13 @@ const DeleteCategoryModal = ({ show, onClose, idCategory }) => {
 
         await deleteCategory();
         updatevalue();
+        onClose();
 
   }
 
-
-  return (
+// Usar React Portal para renderizar el modal directamente en el <body>,
+  // asegurando que el fondo cubra toda la pantalla y no dependa del contenedor padre
+  return ReactDOM.createPortal(
     <div className="modal-container">
 
       <div className="modal-info-container">
@@ -41,7 +44,8 @@ const DeleteCategoryModal = ({ show, onClose, idCategory }) => {
         {error && <div className='container-error'><h2>{`Error: ${error}`}</h2></div>}
 
       </div>
-    </div>
+    </div>, //Importante la coma
+    document.body //Montar el modal directamente en el body
   )
 }
 

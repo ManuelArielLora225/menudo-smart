@@ -1,0 +1,148 @@
+/* Contenedor principal de las transacciones */
+.container-transactions {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Contenedor de la lista de transacciones */
+.container-transaction-transactions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Contenedor individual de cada transacción */
+.container-transaction {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 12px 16px;
+  transition: background-color 0.2s ease;
+}
+
+.container-transaction:hover {
+  background-color: #f1f3f4;
+}
+
+/* Contenedor de descripción y fecha */
+.container-descripcion-date {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 4px;
+}
+
+/* Estilo para la descripción */
+.descripcion {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin: 0;
+  text-transform: lowercase;
+}
+
+/* Estilo para la fecha */
+.date {
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+}
+
+/* Contenedor del monto */
+.container-amount-delete {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Estilo para el monto */
+.amount {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  text-align: right;
+  min-width: 80px;
+}
+
+/* Estilo para el monto cuando es positivo (ingresos) */
+.container-transaction .amount.positive {
+  color: #28a745;
+}
+
+/* Estilo para el monto cuando es negativo (gastos) */
+.container-transaction .amount.negative {
+  color: #dc3545;
+}
+
+/* Contenedor de loading */
+.container-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.container-loading p {
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Contenedor de error */
+.container-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.container-error p {
+  color: #721c24;
+  font-size: 14px;
+  margin: 0;
+  text-align: center;
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 480px) {
+  .container-transaction {
+    padding: 10px 12px;
+  }
+  
+  .descripcion {
+    font-size: 13px;
+  }
+  
+  .date {
+    font-size: 11px;
+  }
+  
+  .amount {
+    font-size: 13px;
+    min-width: 70px;
+  }
+}
+
+/* Estado vacío cuando no hay transacciones */
+.container-transactions:empty::after {
+  content: "No hay transacciones para mostrar";
+  display: block;
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin-top: 10px;
+}

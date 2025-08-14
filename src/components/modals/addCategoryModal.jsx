@@ -17,15 +17,17 @@ const CategoryModal = ({ show, onClose, type }) => {
 
     const { addCategory, loading, error} = useAddCategory(categoryName, type) //usar el nombre el tipo de categoria correspondiente
 
-    const { value, updatevalue } = useContext(UpdateContext) //Usar la funcion y el valor para actualizar el useEfect
+    const { updatevalue } = useContext(UpdateContext) //Usar la funcion y el valor para actualizar el useEfect
 
 
     
-    //Guardar la categoria y cerrar el modal y reiniciar el valor 
+    //Guardar la categoria y cerrar el modal y reiniciar el valor y ejecutar la funcion para cerrarlo
     const saveCategory = async () => {
+        if(categoryName === '') return null; //NO hacer nada si el nombre de la categoria esta vacio
         await addCategory();
         setCategoryName('');
         updatevalue();
+        onClose();
     }
 
     return(

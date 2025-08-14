@@ -18,12 +18,11 @@
   border: 1px solid #e9ecef;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column; /* Cambiar a columna para expandir verticalmente */
+  gap: 1rem;
 }
 
 .container-category-info:hover {
@@ -42,6 +41,15 @@
   width: 4px;
   background: linear-gradient(135deg, #2ECC9F, #27B390);
   border-radius: 0 4px 4px 0;
+}
+
+/* Contenedor de la información principal (header de la categoría) */
+.category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
 }
 
 /* Contenedor de información principal */
@@ -79,6 +87,58 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+/* Botón para mostrar modal de eliminación */
+.buton-showMOdal {
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  margin: 0;
+  user-select: none;
+  background: transparent;
+  border: none;
+}
+
+.buton-showMOdal:hover {
+  background-color: rgba(220, 53, 69, 0.1);
+  transform: scale(1.1);
+}
+
+/* Contenedor de transacciones expandible */
+.transactions-container {
+  width: 100%;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border-top: 1px solid #e9ecef;
+  padding-top: 1rem;
+  margin-top: 0.5rem;
+  animation: slideDown 0.3s ease-out;
+}
+
+/* Animación para mostrar las transacciones */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    padding-top: 0;
+    margin-top: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 500px;
+    padding-top: 1rem;
+    margin-top: 0.5rem;
+  }
+}
+
+/* Estilo específico para cuando se muestran las transacciones */
+.container-category-info.expanded {
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+  border-color: #2ECC9F;
+  transform: translateY(-1px);
 }
 
 /* Estados de carga y error */
@@ -158,6 +218,9 @@
   
   .container-category-info {
     padding: 1rem;
+  }
+  
+  .category-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.75rem;
@@ -204,5 +267,10 @@
   
   .loading-titlle {
     font-size: 1rem;
+  }
+  
+  .transactions-container {
+    padding-top: 0.75rem;
+    margin-top: 0.25rem;
   }
 }

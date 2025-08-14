@@ -5,6 +5,8 @@ import '../../styles/categoryPrevew.css' //Importar el estilo
 import { useContext } from 'react' //Usar el useContext para usar el contexto del valor de value
 import { UpdateContext } from '../../providers/updateProvider' //Importar el provider para actualizar el provider
 import DeleteCategoryModal from '../modals/deleteCategoryModal' //Importar el modal para eliminar la categoria
+import AddTransactionForm from '../transactions/addNewTransaction' //Importar formulario para anadir el formulario par anadir transacciones
+import Transactions from '../transactions/transactions' //Importar el copmponente para ver las transacciones
 
 
 //Crear componente de la categoria de gastos
@@ -18,6 +20,8 @@ const CategoryExpense = () => {
    const [showModal, setShowModal] = useState(false) //setear el valor para mostrar el modal
    const [idCategory, setIdCategory] = useState('') //Setear el valor de la cateogira a eliminar
 
+   const [showTransactions, setShowTransactions] = useState({}) //Setear el valor para mostrar el contenedor de transacciones siendo un objeto para controlar cada categoria individual
+
 
     //Hacer la funcion de llamada a la api en useaEffect de los gastos para que no se renderice junto a la pagina
     useEffect(() => {
@@ -28,7 +32,8 @@ const CategoryExpense = () => {
     const categoryTotal = '0'
 
     //Funcion para abrir el modal y dar el valor del id al idCategory
-    const openModal = (id) => {
+    const openModal = (id, e) => {
+        e.stopPropagation() // Prevenir que se ejecute el toggle de transacciones
         setIdCategory(id)
         setShowModal(true)
     }
@@ -38,6 +43,15 @@ const CategoryExpense = () => {
         setShowModal(false)
         setIdCategory('')
     }
+
+    //Crear la funcion para mostrar el contenedor de transacciones
+    const HandleshowTransactions = (categoryId) => {
+     setShowTransactions(prev => ({
+        ...prev,
+        [categoryId]: !prev[categoryId] // Solo afecta la categoría específica
+        }))
+    }
+    
     return (
 
         
@@ -47,17 +61,42 @@ const CategoryExpense = () => {
 
                     dataExpense.map(category => ( //Hacer un map para todas las categorias
 
-                        <div className='container-category-info' key={category.id}>
+                        <div className={`container-category-info ${showTransactions[category.id] ? 'expanded' : ''}`} key={category.id}
+                        onClick={() => HandleshowTransactions(category.id)}>
 
-                            <h2 className='tittle-category'>{category.name}</h2>
+                            {/* Header de la categoría */}
 
-                            <h2 className='total-category'>{categoryTotal}</h2> {/* Mostrar el total de las transacciones de la categoria */}
+                            <div className='category-header'>
 
-                            <p className='buton-showMOdal' onClick={() => openModal(category.id)}>🗑️</p>
-                        </div>
+                                <div className='category-main-info'>
 
+                                    <h2 className='tittle-category'>{category.name}</h2
+                                    >
+                                    <h2 className='total-category'>{categoryTotal}</h2>
+
+                                </div>
+
+                                <div className='category-actions'>
+
+                                    <p className='buton-showMOdal' onClick={(e) => openModal(category.id, e)}>🗑️</p>
+
+                                </div>
+
+                            </div>
+
+                            {showTransactions[category.id] && (
+
+                                <div className='transactions-container'>
+
+                                    <Transactions categoryId={category.id} />
+
+                                    {console.log(category.id)}
+                                    
+                                    <AddTransactionForm categoryId={category.id}/>
+                                </div>
+                            )}
+                        </div> 
                     ))
-                
                 }
 
                 {loadingExpense && //Pantalla cuando esta cargando
@@ -84,6 +123,7 @@ const CategoryExpense = () => {
                 <DeleteCategoryModal show={showModal} onClose={closeModal} idCategory={idCategory} /> /* Anadir el prop de la funcion para cerrarlo y anadir el tipo de categoria */
 
             )}
+
 
             </div>
 

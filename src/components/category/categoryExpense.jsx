@@ -7,6 +7,7 @@ import { UpdateContext } from '../../providers/updateProvider' //Importar el pro
 import DeleteCategoryModal from '../modals/deleteCategoryModal' //Importar el modal para eliminar la categoria
 import AddTransactionForm from '../transactions/addNewTransaction' //Importar formulario para anadir el formulario par anadir transacciones
 import Transactions from '../transactions/transactions' //Importar el copmponente para ver las transacciones
+import TotalTransaction from '../transactions/totalTransactions' //Importar el componente con el total de transacciones
 
 
 //Crear componente de la categoria de gastos
@@ -70,9 +71,9 @@ const CategoryExpense = () => {
 
                                 <div className='category-main-info'>
 
-                                    <h2 className='tittle-category'>{category.name}</h2
-                                    >
-                                    <h2 className='total-category'>{categoryTotal}</h2>
+                                    <h2 className='tittle-category'>{category.name}</h2>
+
+                                    <TotalTransaction categoryId={category.id} type='expense'/>
 
                                 </div>
 
@@ -89,8 +90,6 @@ const CategoryExpense = () => {
                                 <div className='transactions-container'>
 
                                     <Transactions categoryId={category.id} />
-
-                                    {console.log(category.id)}
                                     
                                     <AddTransactionForm categoryId={category.id}/>
                                 </div>

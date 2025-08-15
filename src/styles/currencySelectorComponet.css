@@ -1,13 +1,12 @@
 /* Importar fuente Inter */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-/* Contenedor general del selector de moneda */
+/* Contenedor general del selector de moneda - CAMBIO: ancho completo */
 .change-currency-general-container {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  width: 100%;
-  max-width: 300px;
+  width: 100%; /* Ocupa todo el ancho disponible */
   font-family: 'Inter', sans-serif;
 }
 
@@ -97,7 +96,7 @@
 /* Estilos responsive */
 @media (max-width: 768px) {
   .change-currency-general-container {
-    max-width: 100%;
+    width: 100%; /* Mantener ancho completo en móvil */
   }
   
   #currency {

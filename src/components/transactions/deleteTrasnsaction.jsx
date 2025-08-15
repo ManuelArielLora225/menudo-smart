@@ -4,6 +4,8 @@ import { useDeleteTransaction } from '../../services/transactionService' //Impor
 import { useContext } from 'react' //Usar el useContext para usar el contexto del valor de value
 import { UpdateContext } from "../../providers/updateProvider" //Importar el provider para actualizar el provider
 
+import '../../styles/deleteTransaction.css'
+
 
 //Crear componente de boton para elinnar la transaccion
 const DeleteTransaction = ({ transactionId }) => {

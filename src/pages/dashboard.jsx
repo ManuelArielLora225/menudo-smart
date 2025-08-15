@@ -4,6 +4,8 @@ import FinanceResum from "../components/financeResum" //Importar el componente d
 import CurrencySelector from "../components/currencySelector" //Importar el componente para ver y seleccionar el cambio de moneda que se usara
 import CategoryContainer from "../components/category/categoryContainer" //Importar el componente del contenedor de las categorias
 
+import ReportsButomsContainer from "../components/reportsButomsContainer" //Exportar el contenedor de los botones de reportes
+
 //Crear pagina de dashboard
 const Dashboard = () => {
 
@@ -17,7 +19,7 @@ const Dashboard = () => {
 
         <CurrencySelector /> {/* Usar el componente para ver y seleccionar el tipo de moneda */}
 
-        {/* Poner los componentes de ver historial de reportes y generador de reportes */}
+        <ReportsButomsContainer />
 
         <CategoryContainer />
 

@@ -17,7 +17,7 @@ const FinanceResum = () => {
         getResum();
 
     }, [value])  // Actualizar cada que el valor del provider cambie
-
+    
     //Funcion para cambiar el tipo de negativo o positivo segun sea el balance negativo o positivo
     const formatStyleType = (value) => {
 

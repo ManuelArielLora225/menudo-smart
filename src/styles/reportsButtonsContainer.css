@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+
+.container-archives {
+    flex: 1;
+}
+
+.container-reports {
+    flex: 1;
+}
+
+.archived-reports-btn {
+    width: 100%;
+}

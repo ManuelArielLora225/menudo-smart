@@ -1,0 +1,29 @@
+.archived-reports-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.2s;
+}
+
+.archived-reports-btn:hover:not(:disabled) {
+    background: #e0e0e0;
+}
+
+.archived-reports-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.icono {
+    font-size: 16px;
+}
+
+.titulo {
+    margin: 0;
+}

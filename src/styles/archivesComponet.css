@@ -1,0 +1,23 @@
+.archived-reports-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.archived-reports-btn:hover {
+    background: #e0e0e0;
+}
+
+.icono {
+    font-size: 16px;
+}
+
+.titulo {
+    margin: 0;
+}

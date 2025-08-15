@@ -1,0 +1,45 @@
+/* Contenedor principal del total */
+.total-Container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-left: auto;
+}
+
+.total-Container h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* Estilo para ingresos (verde) */
+.income {
+  color: #149b6e;
+}
+
+/* Estilo para gastos (rojo) */
+.expense {
+  color: #bf0010;
+}
+
+/* Asegurar que el contenedor padre tenga flexbox */
+.category-container,
+.category-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Para que el total se mantenga alineado a la derecha */
+.category-info {
+  flex: 1;
+}
+
+.category-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}

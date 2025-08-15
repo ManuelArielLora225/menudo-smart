@@ -76,3 +76,26 @@ export function useDeleteTransaction(categoryId) {
 
 
 }
+
+//Crear funciones para sumar el total de transacciones por categoria
+export function useGetTotalTransaction(categoryId) {
+
+    const token = localStorage.getItem("token") //Obtener el token del usuario 
+
+    //Importar las variables del useFetchApi usando el url y el token y poniendo la categoria de intresos
+    const {data, error, loading, request } = useFetchApi(`http://localhost:4000/api/transactions/totalTransactions/${categoryId}`, token)
+
+    //Funcion para tener el total de transacciones
+    const getTotalTransaction = async() => {
+
+        const response = await request({
+            method: 'GET' //USar metodo get
+        })
+
+        return response
+    }
+
+    return { getTotalTransaction, data, error, loading}
+
+
+}

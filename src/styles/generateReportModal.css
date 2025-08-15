@@ -1,0 +1,187 @@
+/* Estilos para el Modal de Generar Reporte */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Contenedor principal del modal - Overlay de fondo */
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro semitransparente */
+    backdrop-filter: blur(4px); /* Efecto de desenfoque en el fondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Asegura que esté por encima de todo */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Contenedor del contenido del modal */
+.modal-info-container {
+    background: white;
+    border-radius: 12px;
+    padding: 32px;
+    min-width: 400px;
+    max-width: 500px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+                0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    position: relative;
+    animation: modalFadeIn 0.2s ease-out; /* Animación de entrada */
+}
+
+/* Animación de entrada del modal */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Título del modal de generar reporte */
+.Titulo-modal-GenrateReport {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0 0 16px 0;
+    text-align: center;
+    line-height: 1.3;
+}
+
+/* Descripción del modal */
+.descripcion-Modal {
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.5;
+    margin: 0 0 24px 0;
+    text-align: center;
+}
+
+/* Contenedor de botones */
+.contenedor-botones {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end; /* Botones alineados a la derecha */
+}
+
+/* Estilos base para todos los botones */
+.contenedor-botones button {
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    min-width: 100px;
+}
+
+/* Botón Guardar (principal - azul/verde) */
+.contenedor-botones button:first-child {
+    background-color: #3b82f6; /* Azul para acción principal */
+    color: white;
+}
+
+.contenedor-botones button:first-child:hover:not(:disabled) {
+    background-color: #15700e; /* Azul más oscuro en hover */
+    transform: translateY(-1px); /* Efecto de elevación */
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); /* Sombra azul */
+}
+
+.contenedor-botones button:first-child:disabled {
+    background-color: #9ca3af; /* Gris cuando está deshabilitado */
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Botón Cancelar (secundario) */
+.contenedor-botones button:last-child,
+.cancel-butom {
+    background-color: #f3f4f6;
+    color: #374151;
+    border: 1px solid #d1d5db;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 100px;
+}
+
+.contenedor-botones button:last-child:hover,
+.cancel-butom:hover {
+    background-color: #e5e7eb;
+    border-color: #9caf9d;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor de mensajes de error */
+.container-error {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #fef2f2; /* Fondo rosa claro */
+    border: 1px solid #fecaca; /* Borde rosa */
+    border-radius: 8px;
+    padding: 16px 20px;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15);
+    z-index: 10001; /* Por encima del modal */
+    animation: errorSlideIn 0.3s ease-out;
+    max-width: 400px;
+}
+
+/* Animación de entrada del mensaje de error */
+@keyframes errorSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(100%); /* Entra desde la derecha */
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Texto del mensaje de error */
+.container-error h2 {
+    color: #dc2626; /* Texto rojo */
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Estilos responsive para dispositivos móviles */
+@media (max-width: 480px) {
+    .modal-info-container {
+        margin: 16px;
+        min-width: auto;
+        width: calc(100% - 32px); /* Ocupa casi todo el ancho en móvil */
+        padding: 24px;
+    }
+    
+    .contenedor-botones {
+        flex-direction: column; /* Botones apilados verticalmente */
+    }
+    
+    .contenedor-botones button {
+        min-width: auto;
+        width: 100%; /* Botones de ancho completo en móvil */
+    }
+    
+    .container-error {
+        left: 16px;
+        right: 16px;
+        top: 16px;
+        max-width: none; /* Error ocupa todo el ancho disponible */
+    }
+}
